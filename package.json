@@ -1,0 +1,29 @@
+{
+    "name": "react-native-swipe-slider",
+    "version": "1.0.0",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "repository": "git@github.com:tomekkleszcz/react-native-swipe-slider.git",
+    "author": "tomekkleszcz <tomekkleszcz@icloud.com>",
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "native",
+        "swipe",
+        "slider"
+    ],
+    "scripts": {
+        "prepublish": "tsc"
+    },
+    "devDependencies": {
+        "@types/react-native": "^0.63.42",
+        "@typescript-eslint/eslint-plugin": "^4.10.0",
+        "@typescript-eslint/parser": "^4.10.0",
+        "eslint": "^7.16.0",
+        "typescript": "^4.1.3"
+    },
+    "peerDependencies": {
+        "react": ">= 16.8.0",
+        "react-native": ">= 0.59.0"
+    }
+}
