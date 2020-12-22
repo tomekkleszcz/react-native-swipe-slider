@@ -18,6 +18,9 @@ or
 
 ![React Native Swipe Slider demo](demo/demo.gif)
 
+## 💈 Example
+
+Please check out this [Expo Snack](https://snack.expo.io/@tomekkleszcz/react-native-swipe-slider-example).
 
 ## 🧰 Usage
 
