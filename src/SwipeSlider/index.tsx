@@ -29,6 +29,7 @@ type SwipeSliderProps = {
 
     value: number;
     onChange?: (value: number) => void;
+    changeEventThrottle?: number;
 
     vertical?: boolean;
     backgroundColor: string;
@@ -45,6 +46,7 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
 
     value,
     onChange,
+    changeEventThrottle,
 
     vertical = false,
     backgroundColor,
@@ -57,6 +59,7 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
 }) => {
     const dimensions = useRef<Dimensions>({width: 0, height: 0});
     const animation = useRef(new Animated.Value(value));
+    const lastChangeEventCall = useRef(0);
 
     const tempValueHandler = useCallback(
         (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
@@ -74,6 +77,12 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
                 duration: 25,
                 useNativeDriver: false
             }).start();
+
+            if(!changeEventThrottle || Date.now() - lastChangeEventCall.current < changeEventThrottle) {
+                return;
+            }
+            onChange?.(tempValue);
+            lastChangeEventCall.current = Date.now();
         },
         [dimensions, min, max, step, vertical, value]
     );
