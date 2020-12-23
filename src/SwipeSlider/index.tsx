@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 //Hooks
-import {useState, useEffect, useRef, useCallback} from 'react';
+import {useEffect, useRef, useCallback} from 'react';
 
 //Components
 import {View, PanResponder, Animated} from 'react-native';
