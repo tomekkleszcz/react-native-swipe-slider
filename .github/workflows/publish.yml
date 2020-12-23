@@ -5,7 +5,7 @@ on:
     workflows:
       - Tests
     branches:
-      - master
+      - main
     types:
       - completed
 
