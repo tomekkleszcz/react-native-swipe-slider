@@ -3,6 +3,7 @@
 [![npm](https://img.shields.io/npm/v/react-native-swipe-slider)](https://www.npmjs.com/package/react-native-swipe-slider)
 ![npm](https://img.shields.io/npm/dm/react-native-swipe-slider)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tomekkleszcz/react-native-swipe-slider/Publish)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tomekkleszcz/react-native-swipe-slider/Tests?label=tests)
 
 iOS brightness-style slider ready to use in your next React Native app.
 
