@@ -1,7 +1,6 @@
 module.exports = {
     root: true,
     extends: [
-        'plugin:jest/recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended'
     ],
@@ -9,10 +8,7 @@ module.exports = {
     parserOptions: {
         project: './tsconfig.json'
     },
-    plugins: ['@typescript-eslint', 'jest'],
-    env: {
-        'jest/globals': true
-    },
+    plugins: ['@typescript-eslint'],
     rules: {
         'comma-dangle': 'off',
         'no-spaced-func': 'off',
