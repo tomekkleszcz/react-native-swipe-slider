@@ -1,6 +1,6 @@
 {
     "name": "react-native-swipe-slider",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "iOS brightness-style slider ready to use in your next React Native app.",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
