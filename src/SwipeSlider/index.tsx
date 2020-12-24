@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 //Hooks
-import {useEffect, useRef, useCallback} from 'react';
+import {useState, useEffect, useRef, useCallback} from 'react';
 
 //Components
 import {View, PanResponder, Animated} from 'react-native';
@@ -57,7 +57,7 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
     
     children
 }) => {
-    const dimensions = useRef<Dimensions>({width: 0, height: 0});
+    const [dimensions, setDimensions] = useState<Dimensions>({width: 0, height: 0});
     const animation = useRef(new Animated.Value(value));
     const lastChangeEventCall = useRef(0);
 
@@ -65,7 +65,7 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
         (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
             const tempValue = calculateValue(
                 gestureState,
-                dimensions.current,
+                dimensions,
                 min,
                 max,
                 step,
@@ -91,7 +91,7 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
         (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
             const tempValue = calculateValue(
                 gestureState,
-                dimensions.current,
+                dimensions,
                 min,
                 max,
                 step,
@@ -119,10 +119,10 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
 
     const onLayoutHandler = useCallback(
         (event: LayoutChangeEvent) => {
-            dimensions.current = {
+            setDimensions({
                 width: event.nativeEvent.layout.width,
                 height: event.nativeEvent.layout.height
-            };
+            });
         },
         [dimensions]
     );
@@ -137,7 +137,7 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
 
     const interpolatedValue = animation.current.interpolate({
         inputRange: [min, max],
-        outputRange: ['0%', '100%']
+        outputRange: [0, vertical ? dimensions.height : dimensions.width]
     });
 
     return (
@@ -151,8 +151,8 @@ const SwipeSlider: React.FC<SwipeSliderProps> = ({
                     Styles.bar,
                     {
                         backgroundColor: barColor,
-                        height: vertical ? interpolatedValue : '100%',
-                        width: vertical ? '100%' : interpolatedValue
+                        height: vertical ? interpolatedValue : dimensions.height,
+                        width: vertical ? dimensions.width : interpolatedValue
                     },
                     barStyle
                 ]}
