@@ -11,6 +11,7 @@ const Styles = StyleSheet.create({
     bar: {
         position: 'absolute',
         bottom: 0,
+        left: 0
     }
 });
 
